@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    main {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    #quantity {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        name: params.get('name'),
+        price: parseInt(params.get('price'), 10)
+      };
+    }
+
+    function updatePrice() {
+      const basePrice = parseInt(document.getElementById('base-price').innerText, 10);
+      const quantity = parseInt(document.getElementById('quantity').value, 10);
+      const totalPrice = basePrice * quantity;
+      document.getElementById('total-price').innerText = totalPrice;
+    }
+
+    function proceedToPayment() {
+  const foodName = document.getElementById('food-name').innerText;
+  const totalPrice = document.getElementById('total-price').innerText;
+  window.location.href = `HotelCart.php?name=${encodeURIComponent(foodName)}&price=${totalPrice}`;
+
+  // Clear previous orders section
+  document.getElementById('previous-orders').innerHTML = '';
+  document.getElementById('total-order-price').innerText = '0';
+}
+
+    function continueShopping() {
+      const foodName = document.getElementById('food-name').innerText;
+      const quantity = parseInt(document.getElementById('quantity').value, 10);
+      const basePrice = parseInt(document.getElementById('base-price').innerText, 10);
+      const totalPrice = basePrice * quantity;
+      
+      let selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+      selectedItems.push({ name: foodName, quantity: quantity, price: totalPrice });
+      localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+      window.history.back(); // Goes to the previous page
+    }
+    function clearPreviousOrders() {
+        localStorage.removeItem('selectedItems');
+        document.getElementById('previous-orders').innerHTML = '';
+         document.getElementById('total-order-price').innerText = '0';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = getQueryParams();
+      document.getElementById('food-name').innerText = params.name;
+      document.getElementById('base-price').innerText = params.price;
+      document.getElementById('quantity').addEventListener('input', updatePrice);
+      updatePrice();  // Initialize total price
+
+      const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+      let previousOrders = '';
+      let totalOrderPrice = 0;
+
+      selectedItems.forEach(item => {
+        previousOrders += `${item.quantity} x ${item.name} - Rs ${item.price} <br>`;
+        totalOrderPrice += item.price;
+      });
+
+      document.getElementById('previous-orders').innerHTML = previousOrders;
+      document.getElementById('total-order-price').innerText = totalOrderPrice;
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Food Details</h1>
+    <p>Food Name: <span id="food-name"></span></p>
+    <p>Price per Item: Rs <span id="base-price"></span>/-</p>
+    <div>
+      <button onclick="document.getElementById('quantity').stepDown(); updatePrice();">-</button>
+      <input type="number" id="quantity" value="1" min="1" step="1">
+      <button onclick="document.getElementById('quantity').stepUp(); updatePrice();">+</button>
+    </div>
+    <p>Total Price: Rs <span id="total-price"></span>/-</p>
+    <div class="button-container">
+      <button onclick="proceedToPayment()">Proceed to Payment</button>
+      <button onclick="continueShopping()">Continue Shopping</button>
+      <button onclick="clearPreviousOrders()">Clear Previous Orders</button>
+
+    </div>
+    <div id="previous-orders-section">
+      <h2>Previous Orders</h2>
+      <p id="previous-orders"></p>
+      <p>Total Order Price: Rs <span id="total-order-price"></span>/-</p>
+    </div>
+  </main>
+</body>
+</html>

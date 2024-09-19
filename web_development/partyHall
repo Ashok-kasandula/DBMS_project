@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Halls</title>
+    <link rel="stylesheet" href="partyStyles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to our Party Halls</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to our party halls! We offer beautiful venues for all your special occasions.</p>
+        <p>Our halls are equipped with state-of-the-art facilities and can accommodate both small and large gatherings.</p>
+    </section>
+
+    <section id="facilities">
+        <h2>Facilities</h2>
+        <ul>
+            <li>Spacious halls</li>
+            <li>Modern audio and visual equipment</li>
+            <li>Flexible seating arrangements</li>
+            <li>Professional catering services</li>
+            <li>Ample parking space</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any inquiries or would like to book one of our party halls, please contact us:</p>
+        <p>Email: info@example.com</p>
+        <p>Phone: 123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Party Halls. All rights reserved.</p>
+    </footer>
+</body>
+</html>

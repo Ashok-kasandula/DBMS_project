@@ -1,0 +1,73 @@
+<?php 
+session_start();
+include("connection.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Hall Gallery</title>
+    <link rel="stylesheet" href="partyStyles.css">
+    <script>
+    function redirectToBookingPage(imageSrc, price) {
+        window.location.href = `booking.html?imageSrc=${encodeURIComponent(imageSrc)}&price=${price}`;
+    }
+    
+    function openLightbox(imageSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('img');
+        lightboxImage.src = imageSrc;
+        lightbox.style.display = 'block';
+    }
+    
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+    }
+    </script>
+    
+</head>
+<body>
+    <header>
+        <img src="Hotel_logo.png" alt="Hotel Logo" class="top-image">
+        <h1>Party Hall Gallery</h1>
+    </header>
+    <main>
+        <div class="gallery">
+            <div class="image" onclick="redirectToBookingPage('ph3.jpg', 20000)">
+                <img src="ph3.jpg" alt="Party Hall 1">
+                <center><p>Price: Rs 20,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+            <div class="image" onclick="redirectToBookingPage('ph2.jpg', 30000)">
+                <img src="ph2.jpg" alt="Party Hall 2">
+                <center><p>Price: Rs 30,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+            <div class="image" onclick="redirectToBookingPage('ph3.jpg', 25000)">
+                <img src="ph3.jpg" alt="Party Hall 3">
+                <center><p>Price: Rs 25,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+            <div class="image" onclick="redirectToBookingPage('ph3.jpg', 40000)">
+                <img src="ph3.jpg" alt="Party Hall 4">
+                <center><p>Price: Rs 40,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+            <div class="image" onclick="redirectToBookingPage('ph5.jpg', 45000)">
+                <img src="ph5.jpg" alt="Party Hall 5">
+                <center><p>Price: Rs 45,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+            <div class="image" onclick="redirectToBookingPage('ph6.jpg', 50000)">
+                <img src="ph6.jpg" alt="Party Hall 6">
+                <center><p>Price: Rs 50,000/-</p><a href="#"><h3>Book Now</h3></a></center>
+            </div>
+        </div>
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close">&times;</span>
+            <img src="" alt="Lightbox Image">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Hotel Management</p>
+    </footer>
+    <script src="Pscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Pool Gallery</title>
+    <link rel="stylesheet" href="partyStyles.css">
+</head>
+<body>
+    <header>
+        <img src="Hotel_logo.png" alt="Hotel Logo" class="top-image">
+        <h1>Swimming Pool Gallery</h1>
+    </header>
+    <main>
+        <div class="gallery">
+            <div class="image" onclick="openLightbox('pool1.jpg')">
+                <img src="pool1.jpg" alt="pool">
+                <center> <p>Price :Rs 2,000/-</p>
+                    <a href="payment.html?pool=Pool%201&price=2000"><h3>Book Now</h3></a>
+                </center>
+            </div>
+            <div class="image" onclick="openLightbox('pool2.jpg')">
+                <img src="pool2.jpg" alt="pool">
+                <center> <p>Price :Rs 3,000/-</p>
+                    <a href="payment.html?pool=Pool%202&price=3000"><h3>Book Now</h3></a>
+                </center>
+            </div>
+        </div>
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close">&times;</span>
+            <img src="" alt="Lightbox Image">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Hotel Management</p>
+    </footer>
+    <script src="Swim.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  border-radius: 10px;
+  text-align: center; /* Center align the content inside .container */
+}
+
+.admin-quotes {
+  margin-bottom: 20px;
+}
+
+.admin-quotes p {
+  font-style: italic;
+  color: #333; /* Darker color for better readability */
+}
+
+.feedback-form textarea {
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.rating {
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 50px;
+  color: #8e8787;
+  cursor: pointer;
+}
+
+.star:before {
+  content: '★';
+}
+
+.star.active, .star:hover {
+  color: #ffcc00; /* Yellow color for filled stars */
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #45a049;
+}
